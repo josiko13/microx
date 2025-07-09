@@ -1,0 +1,145 @@
+# MicroX API - Colección de cURLs para Postman
+# Copia y pega estos comandos en Postman
+
+## 1. Health Check
+curl --location 'http://localhost:8080/health' \
+--header 'Content-Type: application/json'
+
+## 2. Información de la API
+curl --location 'http://localhost:8080/' \
+--header 'Content-Type: application/json'
+
+## 3. Obtener Usuario por ID
+curl --location 'http://localhost:8080/api/users/1' \
+--header 'Content-Type: application/json'
+
+## 4. Obtener Estadísticas del Usuario
+curl --location 'http://localhost:8080/api/users/1/stats' \
+--header 'Content-Type: application/json'
+
+## 5. Obtener Tweets de un Usuario
+curl --location 'http://localhost:8080/api/users/1/tweets?limit=10&offset=0' \
+--header 'Content-Type: application/json'
+
+## 6. Crear un Tweet (requiere autenticación)
+curl --location 'http://localhost:8080/api/tweets' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1' \
+--data '{
+    "content": "¡Hola mundo! Este es mi primer tweet en MicroX. #microx #golang"
+}'
+
+## 7. Obtener Tweet por ID (requiere autenticación)
+curl --location 'http://localhost:8080/api/tweets/1' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1'
+
+## 8. Seguir a un Usuario (requiere autenticación)
+curl --location --request POST 'http://localhost:8080/api/follow/2' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1'
+
+## 9. Dejar de Seguir a un Usuario (requiere autenticación)
+curl --location --request DELETE 'http://localhost:8080/api/follow/2' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1'
+
+## 10. Obtener Seguidores de un Usuario
+curl --location 'http://localhost:8080/api/users/1/followers' \
+--header 'Content-Type: application/json'
+
+## 11. Obtener Usuarios que Sigue
+curl --location 'http://localhost:8080/api/users/1/following' \
+--header 'Content-Type: application/json'
+
+## 12. Probar Validación - Tweet Vacío
+curl --location 'http://localhost:8080/api/tweets' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1' \
+--data '{
+    "content": ""
+}'
+
+## 13. Probar Validación - Tweet Muy Largo
+curl --location 'http://localhost:8080/api/tweets' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1' \
+--data '{
+    "content": "Este es un tweet muy largo que excede el límite de 280 caracteres. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+}'
+
+## 14. Probar Validación - Tweet con Solo Espacios
+curl --location 'http://localhost:8080/api/tweets' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1' \
+--data '{
+    "content": "   "
+}'
+
+## 15. Obtener Usuario 2
+curl --location 'http://localhost:8080/api/users/2' \
+--header 'Content-Type: application/json'
+
+## 16. Obtener Usuario 3
+curl --location 'http://localhost:8080/api/users/3' \
+--header 'Content-Type: application/json'
+
+## 17. Crear Tweet como Usuario 2
+curl --location 'http://localhost:8080/api/tweets' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 2' \
+--data '{
+    "content": "¡Hola desde el usuario 2! #microx #testing"
+}'
+
+## 18. Crear Tweet como Usuario 3
+curl --location 'http://localhost:8080/api/tweets' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 3' \
+--data '{
+    "content": "¡Hola desde el usuario 3! #microx #testing"
+}'
+
+## 19. Seguir Usuario 3 desde Usuario 1
+curl --location --request POST 'http://localhost:8080/api/follow/3' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 1'
+
+## 20. Seguir Usuario 1 desde Usuario 2
+curl --location --request POST 'http://localhost:8080/api/follow/1' \
+--header 'Content-Type: application/json' \
+--header 'X-User-ID: 2'
+
+# ==========================================
+# INSTRUCCIONES PARA IMPORTAR EN POSTMAN:
+# ==========================================
+# 1. Abre Postman
+# 2. Ve a "Import" (botón en la esquina superior izquierda)
+# 3. Selecciona la pestaña "Raw text"
+# 4. Copia y pega cada cURL individualmente
+# 5. Postman automáticamente convertirá cada cURL en una request
+# 6. Organiza las requests en carpetas según su funcionalidad
+
+# ==========================================
+# DATOS DE PRUEBA DISPONIBLES:
+# ==========================================
+# Usuario 1: jose (ID: 1)
+# Usuario 2: rocio (ID: 2) 
+# Usuario 3: yanina (ID: 3)
+# Usuario 4: axel (ID: 4)
+# Usuario 5: memo (ID: 5)
+
+# ==========================================
+# HEADERS IMPORTANTES:
+# ==========================================
+# X-User-ID: Para autenticación (simula el usuario logueado)
+# Content-Type: application/json (para requests con body)
+
+# ==========================================
+# CÓDIGOS DE RESPUESTA ESPERADOS:
+# ==========================================
+# 200: OK
+# 201: Created (tweets creados)
+# 400: Bad Request (validaciones fallidas)
+# 404: Not Found (usuario/tweet no encontrado)
+# 500: Internal Server Error 
