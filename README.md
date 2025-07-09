@@ -26,16 +26,22 @@ Una plataforma de microblogging similar a Twitter construida con **Go**, optimiz
 ### Estructura del Proyecto
 ```
 microx/
-├── cmd/server/        # Punto de entrada
-├── internal/          # Código interno de la aplicación
-│   ├── api/          # Handlers HTTP
-│   ├── service/      # Lógica de negocio
-│   ├── repository/   # Acceso a datos
-│   ├── model/        # Modelos de dominio
-│   └── middleware/   # Middleware
-├── pkg/              # Paquetes reutilizables
-├── configs/          # Configuraciones
-└── migrations/       # Migraciones de BD
+├── cmd/                      # Puntos de entrada
+│   ├── server/              # Servidor principal
+│   └── migrate/             # Script de migraciones
+├── internal/                 # Código interno de la aplicación
+│   ├── api/                 # Handlers HTTP
+│   ├── service/             # Lógica de negocio
+│   ├── repository/          # Acceso a datos
+│   │   ├── mysql/          # Repositorios MySQL
+│   │   └── redis/          # Repositorios Redis
+│   ├── model/               # Modelos de dominio
+│   ├── middleware/          # Middleware
+│   └── config/              # Configuraciones
+├── migrations/              # Migraciones de BD
+├── Dockerfile               # Containerización
+├── docker-compose.yml       # Stack completo
+└── config.env.example       # Template de configuración
 ```
 
 ## 🚀 Instalación
