@@ -19,6 +19,8 @@ Una plataforma de microblogging similar a Twitter construida con **Go**, optimiz
 
 ## Arquitectura
 
+Para una explicación detallada de la arquitectura, consulta el archivo [architecture.md](architecture.md).
+
 ### Tecnologías
 - **Backend**: Go 1.21+ con Gin framework
 - **Base de datos**: MySQL (datos persistentes) + Redis (cache)
