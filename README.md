@@ -12,6 +12,8 @@ Una plataforma de microblogging similar a Twitter construida con **Go**, optimiz
 - ✅ **Tweets**: Publicar mensajes cortos (máximo 280 caracteres)
 - ✅ **Follow**: Seguir a otros usuarios
 - ✅ **Timeline**: Ver tweets de usuarios seguidos
+- 🧑‍💻 **Gestión de usuarios**: Crear y consultar usuarios
+- 📈 **Estadísticas de usuario**: followers, following, cantidad de tweets
 - 🚀 **Escalable**: Diseñado para millones de usuarios
 - ⚡ **Optimizado para lecturas**: Cache distribuido y índices optimizados
 
@@ -50,7 +52,7 @@ microx/
 
 1. **Clonar el repositorio**
 ```bash
-git clone <repo-url>
+git clone https://github.com/josiko13/microx.git
 cd microx
 ```
 

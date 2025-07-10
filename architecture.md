@@ -122,8 +122,21 @@ MicroX es una plataforma de microblogging desarrollada en Go que implementa una 
 - **Redis 7.0**: Caché en memoria para optimización
 
 ### Infraestructura
-- **Docker**: Solo para ejecutar Redis en contenedor
-- **MySQL**: Instalación local o en servidor
+- **Docker**: Usado para levantar todo el stack de desarrollo y pruebas:
+  - **microx-app**: Aplicación principal (API Go)
+  - **MySQL**: Base de datos relacional
+  - **Redis**: Caché en memoria
+  - **Adminer**: Gestor web para MySQL
+  - **Redis Commander**: Gestor web para Redis
+- **docker-compose**: Orquestador para levantar todos los servicios con un solo comando
+
+> En desarrollo, puedes levantar toda la infraestructura con:
+> ```bash
+> docker-compose up -d
+> ```
+
+- **MySQL**: Puede usarse en contenedor o instalación local
+- **Redis**: Puede usarse en contenedor o instalación local
 
 ### Herramientas de Desarrollo
 - **Postman**: Testing de API
